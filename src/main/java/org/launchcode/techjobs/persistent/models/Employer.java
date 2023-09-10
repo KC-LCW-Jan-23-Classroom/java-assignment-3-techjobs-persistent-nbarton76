@@ -1,11 +1,12 @@
 package org.launchcode.techjobs.persistent.models;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import javax.persistence.Entity;
 
+@Entity
 public class Employer extends AbstractEntity {
 
     private String location;
-    @Entity
+
     public Employer() {
     }
 
