@@ -1,8 +1,7 @@
 package org.launchcode.techjobs.persistent.models;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -13,21 +12,19 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue
     private int id;
+    @NotBlank(message = "Name must be required")
+    @Size(min=2,max=100 , message="Name must be at least 2 and 100 characters long ")
+    private String name;
 
     public int getId() {
-
         return id;
     }
-    @NotBlank(message = "Name is required")
-    @Size(min = 2, max = 255)
-    private String name;
-    public String getName() {
 
+    public String getName() {
         return name;
     }
 
     public void setName(String name) {
-
         this.name = name;
     }
 
@@ -48,5 +45,5 @@ public abstract class AbstractEntity {
     public int hashCode() {
         return Objects.hash(id);
     }
-    }
+
 }
