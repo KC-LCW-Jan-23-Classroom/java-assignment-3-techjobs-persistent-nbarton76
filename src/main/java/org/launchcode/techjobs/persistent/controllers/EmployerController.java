@@ -50,6 +50,7 @@ public class EmployerController {
             return "employers/view";
         } else {
             return "redirect:../";
+            }
         }
     }
 }

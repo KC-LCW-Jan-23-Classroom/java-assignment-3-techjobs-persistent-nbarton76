@@ -20,7 +20,6 @@ public abstract class AbstractEntity {
     }
     @NotBlank(message = "Name is required")
     @Size(min = 2, max = 255)
-
     private String name;
     public String getName() {
 

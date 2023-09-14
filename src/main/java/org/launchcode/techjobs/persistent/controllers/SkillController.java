@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("skills")
 public class SkillController {
+
     @Autowired
     private SkillRepository skillRepository;
 
     @GetMapping("")
     public String index(Model model) {
-        model.addAttribute("skills", skillRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll() );
         return "skills/index";
     }
 
@@ -30,7 +31,7 @@ public class SkillController {
         if (errors.hasErrors()) {
             return "skills/add";
         }
-
+        skillRepository.save(newSkill);
         return "redirect:";
     }
 
@@ -41,9 +42,10 @@ public class SkillController {
         if (optSkill.isPresent()) {
             Skill skill = (Skill) optSkill.get();
             model.addAttribute("skill", skill);
-            return "skills/view";
+            return "skill/view";
         } else {
             return "redirect:../";
         }
     }
+
 }
